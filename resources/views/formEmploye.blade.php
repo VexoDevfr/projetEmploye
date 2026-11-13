@@ -4,13 +4,14 @@
     <form method="POST" action="{{ url('validerEmploye')}}">
         {{ csrf_field() }}
 
-        <h1>Ajout d'un employé</h1>
+        <h1>@if ($employe->numEmp) Fiche @else Ajout @endif d'un employé</h1>
+        <input type="hidden" name="id" value="{{ $employe->numEmp }}">
         <div class="col-md-12 card card-body bg-light">
             <div class="form-group">
                 <label class="col-md-3">Civilité :</label>
                 <div class="col-md-6">
-                    <p><input type="radio" name="civi" value="Mme" @if ($employe->civilite == "Mme") @endif>Madame</p>
-                    <p><input type="radio" name="civi" value="Mr" @if ($employe->civilite == "M") @endif>Monsieur</p>
+                    <p><input type="radio" name="civi" value="Mme" @if ($employe->civilite == "Mme") checked @endif>Madame</p>
+                    <p><input type="radio" name="civi" value="M" @if ($employe->civilite == "M") checked @endif>Monsieur</p>
                 </div>
             </div>
             <div class="form-group">
@@ -28,16 +29,16 @@
             <div class="form-group">
                 <label class="col-md-3">Mot de passe : </label>
                 <div class="col-md-6">
-                    <input type="password" name="mdp" value="{{ $employe->prenom }}" class="form-control" required>
+                    <input type="password" name="mdp" value="" class="form-control" @if (!$employe->numEmp) required @endif>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3">Profil : vous êtes</label>
                 <div class="col-md-6">
                     <select class="form-select" name="profil">
-                        <option value="parti" @if ($employe->profil == "parti") @endif>Un particulier</option>
-                        <option value="profe" @if ($employe->profil == "profe") @endif>Un professionel</option>
-                        <option value="insti" @if ($employe->profil == "insti") @endif>Un institutionnel</option>
+                        <option value="profe" @if ($employe->profil == "profe") selected @endif>Un professionel</option>
+                        <option value="parti" @if ($employe->profil == "parti") selected @endif>Un particulier</option>
+                        <option value="insti" @if ($employe->profil == "insti") selected @endif>Un institutionnel</option>
                     </select>
                 </div>
             </div>
