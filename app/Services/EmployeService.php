@@ -20,12 +20,22 @@ class EmployeService
 
     public function saveEmploye(Employe $employe)
     {
-        $employe->save();
+        try {
+            $employe->save();
+        } catch (QueryException $exception) {
+            $userMessage = "Impossible de sauvegarder cet employé";
+            throw new UserException($userMessage, $exception->getMessage(), $exception->getCode());
+        }
     }
 
     public function getEmploye($id)
     {
-        $employe = Employe::query()->find($id);
-        return $employe;
+        try {
+            $employe = Employe::query()->find($id);
+            return $employe;
+        } catch (QueryException $exception) {
+            $userMessage = "Impossible d'accéder à la base de données.";
+            throw new UserException($userMessage, $exception->getMessage(), $exception->getCode());
+        }
     }
 }

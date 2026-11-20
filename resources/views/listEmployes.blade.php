@@ -12,6 +12,7 @@
             <th>Prénom</th>
             <th>Intérêt</th>
             <th>Profil</th>
+            <th>Numéro d'équipe</th>
             <th>Message</th>
         </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{$emp->prenom}}</td>
                 <td>{{$emp->interet}}</td>
                 <td>{{$emp->profil}}</td>
+                <td>{{$emp->equipe}}</td>
                 <td>{{$emp->message}}</td>
                 <td><a href="{{ url('/editerEmploye/'.$emp->numEmp) }}">Afficher</a></td>
             </tr>

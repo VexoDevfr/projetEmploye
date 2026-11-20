@@ -25,6 +25,12 @@ navigation">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/ajouterEmploye') }}">Ajouter</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/listerEquipes') }}">Lister les équipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/ajouterEquipe') }}">Ajouter une équipe</a>
+                    </li>
                 </ul>
             </div>
         </div>

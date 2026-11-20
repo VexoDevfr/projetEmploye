@@ -43,6 +43,17 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="col-md-3">Civilité :</label>
+                <div class="col-md-6">
+                    <select name="choixequipe" id="choixequipe">
+                        <option value="" disabled>--Sélectionnez --</option>
+                        @foreach($equipes as $equ)
+                            <option value="{{ $employe->numEqu }}">{{ $equipe->numEqu}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-12 col-md-offset-3">
                     <textarea rows="3" name="msg">{{ $employe->message }}</textarea>
                 </div>
