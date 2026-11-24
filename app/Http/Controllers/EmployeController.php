@@ -54,7 +54,7 @@ class EmployeController extends Controller
             }
             $employe->profil = $request->input('profil');
             $employe->interet = $request->input('interet');
-            $employe->equipe = $request->input('equipe');
+            $employe->numEqu = $request->input('equipe');
             $employe->message = $request->input('msg');
 
             $service = new EmployeService();
@@ -72,7 +72,9 @@ class EmployeController extends Controller
         try {
             $service = new EmployeService();
             $employe = $service ->getEmploye($id);
-            return view('formEmploye', compact('employe'));
+            $service = new EquipeService();
+            $equipes = $service->getListEquipes();
+            return view('formEmploye', compact('employe','equipes'));
         } catch (Exception $exception) {
             return  view('error', compact('exception'));
         }

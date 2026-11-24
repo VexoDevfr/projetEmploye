@@ -45,7 +45,7 @@
             <div class="form-group">
                 <label class="col-md-3">Numéro d'équipe :</label>
                 <div class="col-md-6">
-                    <select name="choixequipe" id="choixequipe">
+                    <select name="equipe" id="choixequipe">
                         <option value="" disabled>-- Sélectionnez --</option>
                         @foreach($equipes as $equ)
                             <option value="{{ $equ->numEqu }}">{{ $equ->numEqu}}</option>

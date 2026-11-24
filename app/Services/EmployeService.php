@@ -10,7 +10,7 @@ class EmployeService
     public function getListEmployes()
     {
         try {
-            $liste = Employe::query()->select()->orderBy('nom')->get();
+            $liste = Employe::query()->select()->orderBy('numEmp')->get();
         } catch (QueryException $exception) {
             $userMessage = "Impossible d'accéder à la base de données.";
             throw new UserException($userMessage, $exception->getMessage(), $exception->getCode());
