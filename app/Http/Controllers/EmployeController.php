@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employe;
 use App\Services\EmployeService;
+use App\Services\EquipeService;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -25,7 +26,9 @@ class EmployeController extends Controller
     {
         try {
             $employe = new Employe();
-            return view('formEmploye', compact('employe'));
+            $service = new EquipeService();
+            $equipes = $service->getListEquipes();
+            return view('formEmploye', compact('employe', 'equipes'));
         }   catch (Exception $exception) {
             return  view('error', compact('exception'));
         }
