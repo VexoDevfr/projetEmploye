@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employe;
 use App\Services\EmployeService;
 use App\Services\EquipeService;
+use App\Services\ProfilService;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -28,7 +29,9 @@ class EmployeController extends Controller
             $employe = new Employe();
             $service = new EquipeService();
             $equipes = $service->getListEquipes();
-            return view('formEmploye', compact('employe', 'equipes'));
+            $service = new ProfilService();
+            $profils = $service->getListProfils();
+            return view('formEmploye', compact('employe', 'equipes', 'profils'));
         }   catch (Exception $exception) {
             return  view('error', compact('exception'));
         }
@@ -74,7 +77,9 @@ class EmployeController extends Controller
             $employe = $service ->getEmploye($id);
             $service = new EquipeService();
             $equipes = $service->getListEquipes();
-            return view('formEmploye', compact('employe','equipes'));
+            $service = new ProfilService();
+            $profils = $service->getListProfils();
+            return view('formEmploye', compact('employe','equipes', 'profils'));
         } catch (Exception $exception) {
             return  view('error', compact('exception'));
         }

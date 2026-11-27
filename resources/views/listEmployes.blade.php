@@ -22,7 +22,7 @@
                 <td>{{$emp->nom}}</td>
                 <td>{{$emp->prenom}}</td>
                 <td>{{$emp->interet}}</td>
-                <td>{{$emp->profil}}</td>
+                <td>{{$emp->libelle_profil}}</td>
                 <td>{{$emp->numEqu}}</td>
                 <td>{{$emp->message}}</td>
                 <td><a href="{{ url('/editerEmploye/'.$emp->numEmp) }}">Afficher</a></td>

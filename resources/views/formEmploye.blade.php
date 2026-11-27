@@ -33,12 +33,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Profil : vous êtes</label>
+                <label class="col-md-3">Profil : vous êtes :</label>
                 <div class="col-md-6">
-                    <select class="form-select" name="profil">
-                        <option value="profe" @if ($employe->profil == "profe") selected @endif>Un professionel</option>
-                        <option value="parti" @if ($employe->profil == "parti") selected @endif>Un particulier</option>
-                        <option value="insti" @if ($employe->profil == "insti") selected @endif>Un institutionnel</option>
+                    <select name="profil" id="choixprofil">
+                        <option value="" disabled>-- Sélectionnez --</option>
+                        @foreach($profils as $pro)
+                            <option value="{{ $pro->id_profil }}" @if($pro->id_profil==$employe->profil) selected @endif>{{ $pro->libelle_profil}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -48,7 +49,7 @@
                     <select name="equipe" id="choixequipe">
                         <option value="" disabled>-- Sélectionnez --</option>
                         @foreach($equipes as $equ)
-                            <option value="{{ $equ->numEqu }}">{{ $equ->numEqu}}</option>
+                            <option value="{{ $equ->numEqu }}" @if($equ->numEqu==$employe->numEqu) selected @endif>{{ $equ->numEqu}}</option>
                         @endforeach
                     </select>
                 </div>

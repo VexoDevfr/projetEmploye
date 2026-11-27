@@ -10,7 +10,11 @@ class EmployeService
     public function getListEmployes()
     {
         try {
-            $liste = Employe::query()->select()->orderBy('numEmp')->get();
+            $liste = Employe::query()
+                ->select('employe.*', 'profil.libelle_profil')
+                ->join('profil', 'profil.id_profil', '=', 'employe.profil')
+                ->orderBy('numEmp')
+                ->get();
         } catch (QueryException $exception) {
             $userMessage = "Impossible d'accéder à la base de données.";
             throw new UserException($userMessage, $exception->getMessage(), $exception->getCode());
