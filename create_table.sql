@@ -17,5 +17,5 @@ CREATE TABLE profil (
 
 CREATE TABLE secteur (
     id_secteur INT(3) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    libelle_secteur CHAR(30),
+    libelle_secteur CHAR(30)
 )

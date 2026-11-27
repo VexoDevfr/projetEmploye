@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipe;
 use App\Services\EquipeService;
+use App\Services\ProfilService;
+use App\Services\SecteurService;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -24,7 +26,9 @@ class EquipeController extends Controller
     {
         try {
             $equipe = new Equipe();
-            return view('formEquipe', compact('equipe'));
+            $service = new SecteurService();
+            $secteurs = $service->getListSecteurs();
+            return view('formEquipe', compact('equipe', 'secteurs'));
         }   catch (Exception $exception) {
             return  view('error', compact('exception'));
         }
@@ -58,7 +62,9 @@ class EquipeController extends Controller
         try {
             $service = new EquipeService();
             $equipe = $service ->getEquipe($id);
-            return view('formEquipe', compact('equipe'));
+            $service = new SecteurService();
+            $secteurs = $service->getListSecteurs();
+            return view('formEquipe', compact('equipe', 'secteurs'));
         } catch (Exception $exception) {
             return  view('error', compact('exception'));
         }

@@ -20,9 +20,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Secteur : </label>
+                <label class="col-md-3">Secteur :</label>
                 <div class="col-md-6">
-                    <input type="text" name="secteur" value="{{ $equipe->secteur }}" class="form-control" required>
+                    <select name="secteur" id="choixsecteur">
+                        <option value="" disabled>-- Sélectionnez --</option>
+                        @foreach($secteurs as $sec)
+                            <option value="{{ $sec->id_secteur }}" @if($equipe->secteur==$sec->id_secteur) selected @endif>{{ $sec->libelle_secteur}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-group">
